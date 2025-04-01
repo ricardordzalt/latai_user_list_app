@@ -6,8 +6,8 @@ interface TableContainerProps {
 export const TableContainer = ({ children }: TableContainerProps) => (
   <div className="not-prose isolate">
     <figure className="flex flex-col gap-1 rounded-xl bg-gray-950/5 p-1 inset-ring inset-ring-gray-950/5 dark:bg-white/10 dark:inset-ring-white/10">
-      <div className="not-prose overflow-auto rounded-lg outline outline-white/5 dark:bg-gray-950/50">
-        <div className="my-8 overflow-hidden">
+      <div className="not-prose rounded-lg outline outline-white/5 dark:bg-gray-950/50">
+        <div className="my-8 overflow-auto">
           <table className="w-full table-auto border-collapse text-sm">
             {children}
           </table>
@@ -57,7 +57,7 @@ export const TableBody = ({ children, ...props }: TableBodyProps) => (
 // table row
 interface TableRowProps {
   children: React.ReactNode;
-  onClick: (event: React.MouseEvent<HTMLTableRowElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLTableRowElement>) => void;
 }
 
 export const TableRow = ({ children, ...props }: TableRowProps) => (

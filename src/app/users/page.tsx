@@ -1,6 +1,7 @@
 import { Users } from 'src/types/user';
 import SearchUserClient from './search-user-client';
 import UserListClient from './user-list-client';
+import { ActionButtons } from './action-buttons';
 
 export default async function UsersPage() {
   const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users', {
@@ -17,6 +18,7 @@ export default async function UsersPage() {
     <main className="p-4">
       <h1>Usuarios</h1>
       <SearchUserClient/>
+      <ActionButtons/>
       <UserListClient users={users}/>
     </main>
   );

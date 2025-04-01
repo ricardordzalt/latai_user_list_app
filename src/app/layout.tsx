@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Latai User List App',
   description: 'Technical test application for Latai',
+  icons: {
+    icon: 'https://app.latailabs.com/hubfs/upti.icon.png',
+  },
 };
 
 export default function RootLayout({
