@@ -4,15 +4,15 @@ import { UserCard } from './user-card';
 import { getUser } from 'src/services/users/get-user';
 
 type UserDetailsProps = {
-  params: Promise<{ userId: string }>
+  params: Promise<{ id: string }>
 };
 
 export default async function UserDetails({ params }: UserDetailsProps) {
-  const { userId } = await params;
+  const { id } = await params;
   const onError = () => {
     return notFound();
   };
-  const user = await getUser({ userId }, onError);
+  const user = await getUser({ userId: id }, onError);
 
   return (
     <CardContainer>
