@@ -1,23 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-
+import { useGetUserNameFilterState } from 'src/state/hooks/user/use-get-user-name-filter-state';
+import { useSetUserNameFilterState } from 'src/state/hooks/user/use-set-user-name-filter-state';
 
 export default function SearchUserClient() {
-    const [query, setQuery] = useState('');
+  const { userNameFilter } = useGetUserNameFilterState();
+  const {setUserNameFilterState} = useSetUserNameFilterState();
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const value = e.target.value;
-        setQuery(value);
-    }
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setUserNameFilterState(value);
+  }
 
-    return (
-        <input
-            type="text"
-            placeholder="Buscar usuario..."
-            value={query}
-            onChange={handleChange}
-            className="border p-2 w-full"
-        />
-    );
+  return (
+    <input
+      type="text"
+      placeholder="Buscar usuario..."
+      value={userNameFilter}
+      onChange={handleChange}
+      className="border p-2 w-full"
+    />
+  );
 }
