@@ -2,7 +2,6 @@ import { Users } from 'src/types/user';
 
 const getUsers = async ({ withSSR = false }: { withSSR?: boolean } = {}, onError: () => void): Promise<Users> => {
   const cacheOption = withSSR ? 'no-store' : 'force-cache';
-
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/users', {
       cache: cacheOption,

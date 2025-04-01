@@ -4,6 +4,8 @@ import { ActionButtons } from './action-buttons';
 import { getUsers } from 'src/services/users/get-users';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default async function UsersPage() {
   const onError = () => {
     return notFound();
