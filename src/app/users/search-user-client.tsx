@@ -1,5 +1,6 @@
 'use client';
 
+import { Input } from 'src/components/input';
 import { useGetUserNameFilterState } from 'src/state/hooks/user/use-get-user-name-filter-state';
 import { useSetUserNameFilterState } from 'src/state/hooks/user/use-set-user-name-filter-state';
 
@@ -13,7 +14,8 @@ export default function SearchUserClient() {
   }
 
   return (
-    <input
+    <Input
+      id="search-user"
       type="text"
       placeholder="Buscar usuario..."
       value={userNameFilter}
