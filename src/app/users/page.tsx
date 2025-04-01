@@ -1,18 +1,14 @@
-import { Users } from 'src/types/user';
 import SearchUserClient from './search-user-client';
 import UserListClient from './user-list-client';
 import { ActionButtons } from './action-buttons';
+import { getUsers } from 'src/services/users/get-users';
+import { notFound } from 'next/navigation';
 
 export default async function UsersPage() {
-  const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users', {
-    // Forces SSR on each request
-    cache: 'no-store',
-  });
-
-  if (!usersResponse.ok) {
-    throw new Error('Failed to fetch users');
-  }
-  const users: Users = await usersResponse.json();
+  const onError = () => {
+    return notFound();
+  };
+  const users = await getUsers({ withSSR: true }, onError);
 
   return (
     <main className="p-4">
