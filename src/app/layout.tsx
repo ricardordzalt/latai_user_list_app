@@ -1,20 +1,23 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./tailwind.css";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './tailwind.css';
+import StateProvider from 'src/providers/state-provider';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+  preload: false,
 });
 
 export const metadata: Metadata = {
-  title: "Latai User List App",
-  description: "Technical test application for Latai",
+  title: 'Latai User List App',
+  description: 'Technical test application for Latai',
 };
 
 export default function RootLayout({
@@ -27,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <StateProvider>
+          {children}
+        </StateProvider>
       </body>
     </html>
   );
